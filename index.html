@@ -9,10 +9,11 @@
       rel="stylesheet"
       href="/node_modules/bootstrap/dist/css/bootstrap.css"
     />
-    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    
   </head>
 
   <body>
+    <div id="isjsloaded">Js pas charger</div>
     <div id="main">
       <header><span id="meme">Meme</span>.<span id="js">js</span></header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -70,7 +71,10 @@
           <div>droite</div>
         </div>
       </article>
+      <button type="button" id="nepascliquer">Ne pas cliquer ici</button>
       <footer>Copyright &copy; 2023 feartou</footer>
     </div>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
