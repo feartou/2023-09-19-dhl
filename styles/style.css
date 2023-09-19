@@ -33,3 +33,22 @@ article {
 footer {
     text-align: center;
 }
+
+#meme-viewer {
+    display: flex;
+    height: 100%;
+}
+
+#meme-viewer > * {
+    height: 100%;
+}
+
+#meme-viewer > *:first-child {
+    flex-grow: 1;
+    float: left;
+}
+
+#meme-viewer > *:last-child {
+    width: 200px;
+    float: right;
+}
