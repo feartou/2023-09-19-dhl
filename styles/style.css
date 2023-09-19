@@ -1,3 +1,10 @@
+body{
+    height: 97vh;
+    width: 99vw;
+    padding-left: 0.6vw;
+    background-color: rgb(217, 219, 212);
+}
+
 header {
     text-decoration: underline black;
     font-size: 36pt;
@@ -11,4 +18,18 @@ header {
 #js {
     color: skyblue;
     font-style: italic;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+article {
+    flex-grow: 1;
+}
+
+footer {
+    text-align: center;
 }
