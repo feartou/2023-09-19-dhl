@@ -1,3 +1,14 @@
-body {
-color: red;
+header {
+    text-decoration: underline black;
+    font-size: 36pt;
+}
+
+#meme {
+    color:tomato;
+    font-weight: bold;
+}
+
+#js {
+    color: skyblue;
+    font-style: italic;
 }
