@@ -1,3 +1,7 @@
-var jsLoadedNode=document.querySelector("#isjsloaded")
-jsLoadedNode.innerHTML='<h1>Js Chargé</h1>'
-jsLoadedNode.classList.add('jsCharger')
+function initJs(){
+    var jsLoadedNode=document.querySelector("#isjsloaded");
+    jsLoadedNode.innerHTML='<b>Js Chargé</b>';
+    jsLoadedNode.classList.add('jsCharger');
+}
+
+initJs();
