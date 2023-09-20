@@ -70,7 +70,7 @@
             </text>
           </svg>
           <div>
-            <form action="">
+            <form action="/formulaireTraitementphp" name="meme_form" method="POST" >
               <h2>Edit Meme</h2>
               <label for="meme_text">Texte</label> <br />
               <input type="text" name="meme_text" id="meme_text" />
@@ -103,8 +103,14 @@
                     name="meme_fontWeight"
                     id="meme_fontWeight"
                     min="1"
+                    max="900"
                   />
                 </div>
+              </div>
+              <br />
+              <div class="col">
+                <div><input type="reset" value="Reset"></div>
+                <div><button type="submit">Submit</button></div>
               </div>
             </form>
           </div>

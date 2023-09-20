@@ -2,7 +2,7 @@ body {
   height: 97vh;
   width: 99vw;
   padding-left: 0.6vw;
-  background-color: rgb(217, 219, 212);
+  background-color: rgb(145, 145, 145);
 }
 
 header {
@@ -70,6 +70,6 @@ footer {
   width: 48%;
 }
 
-.col input {
+.col input, .col button {
   width: 90%;
 }
