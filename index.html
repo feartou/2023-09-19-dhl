@@ -63,13 +63,51 @@
             <text
               x="100"
               y="50"
-              style="font-size: 50px; fill: skyblue;"
+              style="font-size: 50px; fill: skyblue"
               font-weight="bold"
             >
               A moi !!!!
             </text>
           </svg>
-          <div>droite</div>
+          <div>
+            <form action="">
+              <h2>Edit Meme</h2>
+              <label for="meme_text">Texte</label> <br />
+              <input type="text" name="meme_text" id="meme_text" />
+              <br />
+              <div class="col">
+                <div>
+                  <label for="meme_x">x</label><br />
+                  <input type="number" name="meme_x" id="meme_x" />
+                </div>
+                <div>
+                  <label for="meme_y">y</label><br/>
+                  <input type="number" name="meme_y" id="meme_y" />
+                </div>
+              </div>
+
+              <br />
+              <label for="meme_taille"> Taille caractère </label><br />
+              <input type="number" name="meme_taille" id="meme_taille" />
+              <br />
+              <br />
+              <div class="col">
+                <div>
+                  <label for="meme_color"> Couleur </label>
+                  <input type="color" name="meme_color" id="meme_color" />
+                </div>
+                <div>
+                  <label for="meme_fontWeight"> FontWeight </label><br />
+                  <input
+                    type="number"
+                    name="meme_fontWeight"
+                    id="meme_fontWeight"
+                    min="1"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </article>
       <button type="button" id="nepascliquer">Ne pas cliquer ici</button>
