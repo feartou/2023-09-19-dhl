@@ -10,9 +10,7 @@
       href="/node_modules/bootstrap/dist/css/bootstrap.css"
     />
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="js/Image.js"></script>
-    <script src="js/Meme.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/index.js" type="module"></script>
   </head>
 
   <body>
@@ -72,8 +70,18 @@
             </text>
           </svg>
           <div>
-            <form action="/formulaireTraitementphp" name="meme_form" method="POST" >
+            <form
+              action="/formulaireTraitementphp"
+              name="meme_form"
+              method="POST"
+            >
               <h2>Edit Meme</h2>
+              <br />
+              <label for="image">Image</label><br/>
+              <select name="image" id="image">
+                <option value="-1">no image</option>
+              </select>
+              <br />
               <label for="texte">Texte</label> <br />
               <input type="text" name="texte" id="meme_text" />
               <br />
@@ -83,7 +91,7 @@
                   <input type="number" name="x" id="meme_x" />
                 </div>
                 <div>
-                  <label for="y">y</label><br/>
+                  <label for="y">y</label><br />
                   <input type="number" name="y" id="meme_y" />
                 </div>
               </div>
@@ -111,7 +119,7 @@
               </div>
               <br />
               <div class="col">
-                <div><input type="reset" value="Reset"></div>
+                <div><input type="reset" value="Reset" /></div>
                 <div><button type="submit">Submit</button></div>
               </div>
             </form>

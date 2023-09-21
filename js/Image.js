@@ -1,11 +1,15 @@
+import RestAdr, {REST_RESSOURCES} from './constantes.js'
+
+
+
 class ImageShort {
   #uid;
   w = 100;
   h;
   url;
-/**
- * getter de #uid
- */
+  /**
+   * getter de #uid
+   */
   get uid() {
     return this.#uid;
   }
@@ -22,11 +26,11 @@ class ImageShort {
   getRationWH() {
     return this.w / this.h;
   }
-/**
- * constructeur
- * @param {object} img 
- */
-  constructor(img={}) {
+  /**
+   * constructeur
+   * @param {object} img
+   */
+  constructor(img = {}) {
     this.#uid = Math.random();
     if (undefined !== img.w) {
       this.w = img.w;
@@ -40,11 +44,11 @@ class ImageShort {
   }
 }
 
-class ImageMeme extends Image {
+export class ImageMeme extends Image {
   title = "no image";
   id = undefined;
 
-  constructor(img={}) {
+  constructor(img = {}) {
     super(img);
     if (undefined !== img.title && img.title > 2) {
       this.title = img.title;
@@ -65,3 +69,20 @@ class ImageMeme extends Image {
 }
 
 // toujours public si private utiliser le #variable
+
+export class ImagesList extends Array {
+  loadFromRest() {
+    return fetch(RestAdr + REST_RESSOURCES.images)
+      .then((response) => {
+        return response.json();
+      })
+      .then((arr) => {
+        //console.log(arr);
+        this.splice(0); // truncate de array
+        // arr.map((element, position, liste) => { this.push(element); }); // chargement de array
+        this.push(...arr);  // fusion des listes. attention ne s'utilise que si les objets sont de meme type.
+        console.log(this);
+      });
+  }
+}
+export const listeImages = new ImagesList();
