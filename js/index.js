@@ -1,6 +1,8 @@
 import { Meme } from "./Meme.js";
 import { ImagesList, listeImages } from "./Image.js";
 
+/* contact pas SMS : 06 64 27 63 60 */
+
 const loadMemeInit = (meme) => {
   const form = document.forms["meme_form"];
   form["texte"].value = meme.texte;
@@ -11,7 +13,8 @@ const loadMemeInit = (meme) => {
   form["color"].value = meme.color;
   form["underline"].checked = meme.underline;
   form["italic"].checked = meme.italic;
-
+  form["stroke"].checked = meme.stroke;
+  form["shadow"].checked = meme.shadow;
   renderMeme(meme);
 };
 
@@ -36,11 +39,6 @@ const addFormEvent = () => {
 
   // event sur le bouton submit du form
   form.addEventListener("submit", onformsubmit);
-
-  // event sur le select de selection de l'image du form
-  form["image"].addEventListener("change", (evt) => {
-    current.update({ image: evt.target.value });
-  });
 
   // event sur les champs input text et number du form
   form["texte"].addEventListener("input", (evt) => {
@@ -73,8 +71,26 @@ const addFormEvent = () => {
   form["italic"].addEventListener("change", (evt) => {
     current.update({ italic: evt.target.checked });
   });
-};
+  // event sur le select de selection de l'image du form
+  form["image"].addEventListener("change", (evt) => {
+    const id = Number(evt.target.value);
+    const imagefound = listeImages.find((elementimage) => {
+      return elementimage.id === id;
+    });
+    current.update({ imageId: id, image: imagefound });
+  });
 
+  form["stroke"].addEventListener("change", (evt) => {
+    current.update({ stroke: evt.target.checked });
+  });
+  form["shadow"].addEventListener("change", (evt) => {
+    current.update({ shadow: evt.target.checked });
+  });
+};
+/**
+ * 
+ * @param {Meme} meme 
+ */
 const renderMeme = (meme) => {
   console.log(meme);
   const svg = document.querySelector("svg");
@@ -87,6 +103,12 @@ const renderMeme = (meme) => {
   texteElement.style.fill = meme.color;
   texteElement.style.underline = meme.underline ? "underline" : "none";
   texteElement.style.fontStyle = meme.italic ? "italic" : "normal";
+  const img = svg.querySelector("image");
+  img.setAttribute('xlink:href',undefined!==meme.image?meme.image.url:'');
+  svg.setAttribute('viewBox',`0 0 ${undefined!==meme.image? meme.image.w : '1000'} ${undefined!==meme.image?meme.image.h:'1000'}`);
+
+  meme.shadow === true ? texteElement.classList.add('shadow') : texteElement.classList.remove('shadow');
+  meme.stroke === true ? texteElement.classList.add('stroke') : texteElement.classList.remove('stroke');
 };
 
 let current = new Meme();

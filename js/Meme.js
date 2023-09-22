@@ -16,7 +16,7 @@ export function Meme(jsonConfiguredMemeString) {
   this.underline = false;
   this.italic = false;
   this.imageId = -1;
-  this.Image = new Img();
+  this.image = undefined;
   this.render = this.undefined;
   this.save = () => {
     const tmp = {...this,Image:undefined};
