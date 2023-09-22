@@ -16,6 +16,20 @@ export function Meme(jsonConfiguredMemeString) {
   this.italic = false;
   this.imageId = -1;
   this.Image = new Img();
+  this.render = this.undefined;
+  const render = () => {
+    if (undefined !== this.render && typeof this.render === "function") {
+      this.render(this);
+    }
+  };
+  /**
+   * update d'un meme par objet avec force render on update
+   * @param {Object} memeData
+   */
+  this.update = function (memeData) {
+    Object.assign(this,memeData);
+    render();
+  };
   /**
    * Chargement de valeurs a partir d'un meme json
    * @param {string} jsonstr
@@ -48,8 +62,6 @@ export function Meme(jsonConfiguredMemeString) {
   _changeImage(25);
   console.log(_imageId);
 }
-
-var meme = new Meme();
 
 /*  Object.seal(nom_objet) verrouille l'objet plus d'insertion ni de suppression de champs
     Object.freeze(nom_objet) permet faire gele mes données de l'objet
