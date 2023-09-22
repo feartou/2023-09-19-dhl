@@ -201,6 +201,66 @@
       "frameSizeX": 0,
       "frameSizeY": 0,
       "id": 10
+    },
+    {
+      "texte": "toto",
+      "x": 100,
+      "y": 100,
+      "fontsize": 32,
+      "fontweight": "500",
+      "color": "#000000",
+      "underline": false,
+      "italic": false,
+      "imageId": -1,
+      "Image": {
+        "title": "no image"
+      },
+      "image": "0",
+      "id": 11
+    },
+    {
+      "texte": "test 2",
+      "x": 150,
+      "y": 100,
+      "fontsize": 64,
+      "fontweight": "500",
+      "color": "#ab1212",
+      "underline": false,
+      "italic": false,
+      "imageId": -1,
+      "Image": {
+        "title": "no image"
+      },
+      "image": "3",
+      "fontWeight": "900",
+      "id": 12
+    },
+    {
+      "texte": "test 3",
+      "x": 100,
+      "y": 100,
+      "fontsize": 32,
+      "fontweight": "500",
+      "color": "#000000",
+      "underline": false,
+      "italic": false,
+      "imageId": -1,
+      "Image": {
+        "title": "no image"
+      },
+      "id": 13
+    },
+    {
+      "texte": "test 6",
+      "x": 100,
+      "y": 100,
+      "fontsize": 32,
+      "fontweight": "500",
+      "color": "#000000",
+      "underline": false,
+      "italic": false,
+      "imageId": -1,
+      "id": 14
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { ImageMeme as Img } from "./Image.js";
+import RestAdr, { REST_RESSOURCES } from "./constantes.js";
 
 /**
  * Constructeur d'objet Meme
@@ -7,8 +8,8 @@ import { ImageMeme as Img } from "./Image.js";
 export function Meme(jsonConfiguredMemeString) {
   this.id = undefined;
   this.texte = "texte du meme"; // this = public
-  this.x = 1;
-  this.y = 1;
+  this.x = 100;
+  this.y = 100;
   this.fontsize = 32;
   this.fontweight = "500";
   this.color = "#000000";
@@ -17,6 +18,23 @@ export function Meme(jsonConfiguredMemeString) {
   this.imageId = -1;
   this.Image = new Img();
   this.render = this.undefined;
+  this.save = () => {
+    const tmp = {...this,Image:undefined};
+    return fetch(    
+       `${RestAdr}${REST_RESSOURCES.memes}${undefined !== this.id?"/" + this.id:''}`,
+      {
+        method: undefined !== this.id ? "PUT" : "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(tmp),
+      }
+    ).then((response) => {
+      return response.json();
+    });
+  };
+
   const render = () => {
     if (undefined !== this.render && typeof this.render === "function") {
       this.render(this);
@@ -27,7 +45,7 @@ export function Meme(jsonConfiguredMemeString) {
    * @param {Object} memeData
    */
   this.update = function (memeData) {
-    Object.assign(this,memeData);
+    Object.assign(this, memeData);
     render();
   };
   /**

@@ -83,35 +83,41 @@
               </select>
               <br />
               <label for="texte">Texte</label> <br />
-              <input type="text" name="texte" id="meme_text" />
+              <input type="text" name="texte" id="texte" />
               <br />
               <div class="col">
                 <div>
                   <label for="x">x</label><br />
-                  <input type="number" name="x" id="meme_x" />
+                  <input type="number" name="x" id="x" />
                 </div>
                 <div>
                   <label for="y">y</label><br />
-                  <input type="number" name="y" id="meme_y" />
+                  <input type="number" name="y" id="y" />
                 </div>
               </div>
 
               <br />
               <label for="fontsize"> Taille caractère </label><br />
-              <input type="number" name="fontsize" id="meme_taille" />
+              <input type="number" name="fontsize" id="fontsize" />
               <br />
+<div class="col">
+  <div><label for="underline">underline</label><br/><input type="checkbox" name="underline" id="underline"></div>
+  <div><label for="italic">italic</label><br/><input type="checkbox" name="italic" id="italic"></div>
+</div>
+
+
               <br />
               <div class="col">
                 <div>
                   <label for="color"> Couleur </label>
-                  <input type="color" name="color" id="meme_color" />
+                  <input type="color" name="color" id="color" />
                 </div>
                 <div>
                   <label for="fontWeight"> FontWeight </label><br />
                   <input
                     type="number"
                     name="fontWeight"
-                    id="meme_fontWeight"
+                    id="fontWeight"
                     min="1"
                     max="900"
                   />

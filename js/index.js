@@ -1,15 +1,35 @@
 import { Meme } from "./Meme.js";
 import { ImagesList, listeImages } from "./Image.js";
 
+const loadMemeInit = (meme) => {
+  const form = document.forms["meme_form"];
+  form["texte"].value = meme.texte;
+  form["x"].value = Number(meme.x);
+  form["y"].value = Number(meme.y);
+  form["fontWeight"].value = Number(meme.fontweight);
+  form["fontsize"].value = Number(meme.fontsize);
+  form["color"].value = meme.color;
+  form["underline"].checked = meme.underline;
+  form["italic"].checked = meme.italic;
+
+  renderMeme(meme);
+};
+
 const addFormEvent = () => {
+  loadMemeInit(current);
   /**
    * fonction de gestion de soumission de formulaire de preventdefault
    * @param {SubmitEvent} evt
    */
   function onformsubmit(evt) {
     evt.preventDefault();
+    const retPromise = current.save();
+    retPromise.then((response) => {
+      current = new Meme();
+      loadMemeInit(current);
+    });
+    console.log(retPromise);
     console.log(current);
-    //current.save();
   }
 
   const form = document.forms["meme_form"];
@@ -23,33 +43,50 @@ const addFormEvent = () => {
   });
 
   // event sur les champs input text et number du form
-  form["meme_text"].addEventListener("input", (evt) => {
-    current.update({ meme_text: evt.target.value });
+  form["texte"].addEventListener("input", (evt) => {
+    current.update({ texte: evt.target.value });
   });
 
-  form["meme_x"].addEventListener("input", (evt) => {
-    current.update({ meme_x: evt.target.value });
+  form["x"].addEventListener("input", (evt) => {
+    current.update({ x: Number(evt.target.value) });
   });
 
-  form["meme_y"].addEventListener("input", (evt) => {
-    current.update({ meme_y: evt.target.value });
+  form["y"].addEventListener("input", (evt) => {
+    current.update({ y: Number(evt.target.value) });
   });
 
-  form["meme_taille"].addEventListener("input", (evt) => {
-    current.update({ meme_taille: evt.target.value });
+  form["fontsize"].addEventListener("input", (evt) => {
+    current.update({ fontsize: Number(evt.target.value) });
   });
 
-  form["meme_color"].addEventListener("input", (evt) => {
-    current.update({ meme_color: evt.target.value });
+  form["color"].addEventListener("input", (evt) => {
+    current.update({ color: evt.target.value });
   });
 
-  form["meme_fontWeight"].addEventListener("input", (evt) => {
-    current.update({ meme_fontWeight: evt.target.value });
+  form["fontWeight"].addEventListener("input", (evt) => {
+    current.update({ fontWeight: evt.target.value });
+  });
+
+  form["underline"].addEventListener("change", (evt) => {
+    current.update({ underline: evt.target.checked });
+  });
+  form["italic"].addEventListener("change", (evt) => {
+    current.update({ italic: evt.target.checked });
   });
 };
 
 const renderMeme = (meme) => {
   console.log(meme);
+  const svg = document.querySelector("svg");
+  const texteElement = svg.querySelector("text");
+  texteElement.innerHTML = meme.texte;
+  texteElement.setAttribute("x", meme.x);
+  texteElement.setAttribute("y", meme.y);
+  texteElement.setAttribute("font-weight", meme.fontWeight);
+  texteElement.style.fontSize = meme.fontsize;
+  texteElement.style.fill = meme.color;
+  texteElement.style.underline = meme.underline ? "underline" : "none";
+  texteElement.style.fontStyle = meme.italic ? "italic" : "normal";
 };
 
 let current = new Meme();
